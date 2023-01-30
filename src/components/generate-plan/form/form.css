@@ -1,0 +1,153 @@
+.middle-section {
+  width: 35%;
+  height: 100vh;
+  border-right: 1px solid var(--accent);
+}
+
+/* form header start*/
+.middle-section .header {
+  border-bottom: 1px solid var(--accent);
+  height: 15vh;
+  position: relative;
+
+}
+.middle-section .header p {
+  position: absolute;
+  bottom: -1px;
+
+  width: fit-content;
+  height: 15%;
+  
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10px 5px;
+
+  font-size: 0.8rem;
+  border-bottom: 2px solid var(--secondary);
+  color: var(--secondary);
+  margin: 0px;
+}
+/* form header end*/
+
+/* form start */
+.middle-section .form {
+  width: 95%;
+  height: 85vh;
+  padding: 50px 0;
+  display: flex;
+  margin: 0 auto;
+
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+ 
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.form .question {
+  width: 85%;
+  padding: 10px 0;
+
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.question:nth-child(6),
+.question:nth-child(7) {
+  width: 39%;
+  font-size: 0.8rem;
+}
+
+.question:nth-child(8) .number-label-container .label {
+  font-size: 0.9rem;
+}
+
+.form .number-label-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form .question .number-label-container .number {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 40px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lighter);
+}
+
+.form .question .label {
+  /* border: 1px solid; */
+  width: 90%;
+}
+
+.form .question input,
+select,
+.comment {
+  width: 100%;
+  padding: 10px 30px;
+
+  border: 1px solid rgba(0, 137, 109, 0.41);
+  border-radius: 6px;
+  outline: none;
+
+  box-shadow: 0px 3px 9px -2px rgba(0, 0, 0, 0.2);
+  font-family: Arial, Helvetica, sans-serif;
+}
+select {
+  background-color: transparent;
+  color: var(--secondary);
+}
+
+.comment {
+  height: 150px;
+  resize: none;
+}
+
+.optional {
+  margin: 0px 0px 5px;
+  direction: rtl;
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.generate {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+
+  width: 85%;
+  padding: 15px;
+
+  background-color: var(--secondary);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+}
+
+/* error start */
+
+.error {
+  margin: 0;
+  color: red;
+  font-size: 0.9rem;
+  padding: 5px;
+}
+
+.red-border {
+  border: 1px solid red !important;
+}
+/* error end */
+
+
+/* form end */
+
+
+@media (width < 930px) {
+  .middle-section  {
+    width: 100%;
+  }
+}

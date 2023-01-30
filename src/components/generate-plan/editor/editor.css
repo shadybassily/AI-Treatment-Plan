@@ -1,0 +1,101 @@
+.editor-container {
+  width: 50%;
+  position: relative;
+}
+/* toolbar and editor wrapper */
+.rdw-editor-wrapper {
+  height: 70vh;
+  width: 100%;
+}
+/* editor */
+.rdw-editor-main {
+  padding: 15px;
+  overflow-x: hidden;
+}
+
+/* toolbar */
+.rdw-editor-toolbar {
+  height: 20vh;
+
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+}
+
+/* toolbar ["bold", "italic", "underline"] start */
+.rdw-inline-wrapper {
+  padding: 0 10px;
+  height: 35px;
+  border-right: 1px solid var(--accent);
+  margin: 0;
+}
+.rdw-inline-wrapper div {
+  border: none;
+  height: 100%;
+}
+/* toolbar ["bold", "italic", "underline"] end */
+
+/* toolbar ["undo", "redo"] start */
+.rdw-history-wrapper {
+  height: 35px;
+  margin: 0;
+}
+.rdw-history-wrapper div {
+  border: none;
+  height: 100%;
+}
+/* toolbar ["undo", "redo"] end */
+
+/* disable default box shadows on options when hover and when selected */
+.rdw-option-wrapper:hover {
+  box-shadow: none;
+}
+.rdw-option-active {
+  background-color: var(--accent);
+  box-shadow: none;
+}
+/* end */
+
+/* upload image start */
+.rdw-image-wrapper {
+  padding: 0;
+  margin: 0;
+}
+.rdw-image-wrapper .rdw-option-wrapper {
+  background-color: var(--secondary);
+  border-radius: 6px;
+  height: 100%;
+  padding: 7px 10px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.rdw-image-wrapper img {
+  display: none;
+}
+.rdw-image-wrapper:after {
+  text-transform: none;
+  content: "Upload an image";
+  color: #fff;
+}
+/* upload image end */
+
+.save-button {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+
+  background-color: var(--main);
+  border: none;
+  border-radius: 6px;
+
+  padding: 7px 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (width < 930px) {
+  .editor-container  {
+    width: 100%;
+  }
+}

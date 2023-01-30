@@ -1,0 +1,74 @@
+.plans-container {
+  width: 75%;
+  color: #0e4551;
+}
+.plans-container p {
+  font-size: 1.5rem;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+}
+.plans-container .no-plans-yet {
+  font-size: 0.8rem;
+  color: gray;
+}
+.plans-container .plans-list {
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  text-transform: capitalize;
+  height: 25vh;
+  overflow: hidden;
+}
+
+.plans-container .plans-list .plan {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--secondary);
+  /* test */
+  position: relative;
+}
+/* background hover animation effect on plan start */
+.plans-container .plans-list .plan:after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+
+  transform: scaleX(0);
+  background: linear-gradient(to right, #073c32, transparent);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
+  z-index: -1;
+}
+
+.plans-container .plans-list .plan:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+/* hover animation effect on plan end */
+
+.plans-container .plans-list .plan .delete {
+  cursor: pointer;
+  display: inline-flex;
+  color: var(--main);
+}
+
+.plans-container .show-more {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+/* .plans-container .plans-list .plan:hover {
+  background: linear-gradient(to right,#61b5a4, transparent);
+} */
