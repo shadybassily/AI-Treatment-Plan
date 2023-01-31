@@ -11,10 +11,13 @@ A front end application that takes question inputs on the left side of the scree
 * `react-icons`
 
 ## Notes:
-1. Login/Logout functionality is handled by setting the userAuth state to true once logged in, and to false when logged out.
 
-2. No logic implemented on the signIn/signup form (no fields validations).
+1. As there is no webhook to post to and get from to provide the output, Lorem ipsum text is used.
 
-3. On the sideBar, when PLans are displayed, it will only show 4 plans, then `show more` link will appear, yet the logic is not implemented, just to demonstrate the saved plans.
+2. Login/Logout functionality is handled by setting the userAuth state to true once logged in, and to false when logged out.
+
+3. No logic implemented on the signIn/signup form (no fields validations).
+
+4. On the sideBar, when PLans are displayed, it will only show 4 plans, then `show more` link will appear, yet the logic is not implemented, just to demonstrate the saved plans.
 
 
