@@ -41,3 +41,77 @@ export default function useReactForm() {
 
   return { register, handleSubmit, errors };
 }
+
+export const questions = [
+  {
+    id: 1,
+    label: "Patient Full Name",
+    placeHolder: "Ex: mahmoud barbary",
+    name: "patientName",
+    type: "text",
+  },
+  {
+    id: 2,
+    label: "Dentist Email",
+    placeHolder: "Ex: mahmoudbarbary@example",
+    name: "dentistEmail",
+    type: "text",
+  },
+  {
+    id: 3,
+    label: "Patient Feedback",
+    placeHolder: "Ex: the dentist is..",
+    name: "patientFeedback",
+    type: "text",
+  },
+  {
+    id: 4,
+    label: "Dentist Recommendation",
+    placeHolder: "Ex: we can...",
+    name: "dentistRecommendation",
+    type: "text",
+  },
+  {
+    id: 5,
+    label: "Dentist Name",
+    placeHolder: "Ex: Dr ahmed mahmoud",
+    name: "dentistName",
+    type: "text",
+  },
+  {
+    id: 6,
+    label: "Treatment Cost (£)",
+    placeHolder: "Ex: 50£",
+    name: "treatmentCost",
+    type: "text",
+  },
+  {
+    id: 7,
+    label: "Treatment Time (hours)",
+    name: "treatmentTime",
+    type: "select",
+    options: ["1 hour", "2 hours", "3 hours", "4 hours"],
+  },
+  {
+    id: 8,
+    label:
+      "Maximum number of months a patient can pay with 0% interest charged",
+    placeHolder: "Ex: 1 month",
+    name: "monthsWithZeroInterest",
+    type: "text",
+  },
+  {
+    id: 9,
+    label: "% Discount if amount paid in full",
+    placeHolder: "Ex: 20%",
+    name: "discount",
+    type: "text",
+  },
+  {
+    id: 10,
+    label: "Any Comments",
+    placeHolder: "Ex: say whatever you want...",
+    name: "comments",
+    type: "textarea",
+  },
+];

@@ -1,0 +1,17 @@
+.without-sidebar-container {
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+
+.without-sidebar-container > p {
+  width: fit-content;
+  text-align: center;
+  color: #4f4f4f;
+  font-size: 1.2rem;
+  /* border: 1px solid; */
+}
+

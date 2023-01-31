@@ -16,8 +16,8 @@ body {
 
   font-family: "Inter", sans-serif;
   font-size: 1em;
-  height: 100vh;
   font-size: 1em;
+  
 }
 
 ::-webkit-scrollbar {
@@ -33,10 +33,4 @@ body {
   border-radius: 25px;
 }
 
-@media (width < 930px) {
-  :root,
-  html,
-  body {
-    font-size: 0.8em;
-  }
-}
+

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
-import useTextEditor from "./useTextEditor";
+import useTextEditor from "../../../hooks/useTextEditor";
 import "../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import AnimatingBtn from "../../animating-btn/AnimatingBtn";
 import "./editor.css";

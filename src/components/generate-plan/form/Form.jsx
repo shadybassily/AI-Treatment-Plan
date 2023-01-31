@@ -1,6 +1,6 @@
-import { questions } from "./data";
+import { questions } from "../../../hooks/useReactForm";
 import Question from "./Question";
-import useReactForm from "./useReactForm";
+import useReactForm from "../../../hooks/useReactForm";
 import "./form.css";
 import AnimatingBtn from "../../animating-btn/AnimatingBtn";
 

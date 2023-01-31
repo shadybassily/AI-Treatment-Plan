@@ -1,20 +1,11 @@
 .sidebar {
-  width: 25%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--accent);
 }
 
-.sidebar .header {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #0e4551;
-  font-style: italic;
-  padding: 50px 0;
-  letter-spacing: 1.5px;
-  /* border: 1px solid; */
-}
+
 
 @media (width < 930px) {
   .sidebar {

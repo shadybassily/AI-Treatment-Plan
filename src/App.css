@@ -1,6 +1,9 @@
 .App {
   display: flex;
   flex-direction: row;
+  background-color: var(--accent);
+  width: 100%;
+  min-height: 100vh;
 }
 
 @media (width < 930px) {

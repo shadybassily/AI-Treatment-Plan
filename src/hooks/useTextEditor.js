@@ -1,11 +1,11 @@
 import { EditorState, Modifier } from "draft-js";
 import { useState } from "react";
 // toolbar icons
-import bold from "../../../assets/editor-icons/bold.png";
-import italic from "../../../assets/editor-icons/italic.png";
-import underline from "../../../assets/editor-icons/underline.png";
-import undo from "../../../assets/editor-icons/undo.png";
-import redo from "../../../assets/editor-icons/redo.png";
+import bold from "../assets/editor-icons/bold.png";
+import italic from "../assets/editor-icons/italic.png";
+import underline from "../assets/editor-icons/underline.png";
+import undo from "../assets/editor-icons/undo.png";
+import redo from "../assets/editor-icons/redo.png";
 
 
 export default function useTextEditor() {

@@ -1,6 +1,7 @@
 .editor-container {
   width: 50%;
   position: relative;
+  background-color: #fff;
 }
 /* toolbar and editor wrapper */
 .rdw-editor-wrapper {
@@ -58,8 +59,10 @@
 
 /* upload image start */
 .rdw-image-wrapper {
-  padding: 0;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  padding: 0;
 }
 .rdw-image-wrapper .rdw-option-wrapper {
   background-color: var(--secondary);
@@ -73,7 +76,7 @@
 .rdw-image-wrapper img {
   display: none;
 }
-.rdw-image-wrapper:after {
+.rdw-image-wrapper:before {
   text-transform: none;
   content: "Upload an image";
   color: #fff;
@@ -95,7 +98,7 @@
 }
 
 @media (width < 930px) {
-  .editor-container  {
+  .editor-container {
     width: 100%;
   }
 }
