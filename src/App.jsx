@@ -17,7 +17,7 @@ function App() {
 
         {/* WithoutSidebar component, no sidebar needed on login or regestration */}
         <Route element={<WithoutSidebar />}>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
