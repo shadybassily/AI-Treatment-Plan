@@ -11,9 +11,9 @@ export default function DisplayPlans() {
   const [selectedPlan, setSelectedPlan] = useState();
   const dispatch = useDispatch();
   const plans = useSelector((state) => state.plan.value);
- 
-  const isPlans = plans.length == 0 ? false : true
-  //show only 4 plans 
+
+  const isPlans = plans.length == 0 ? false : true;
+  //show only 4 plans
   let limit = 4;
   const plansToDisplay = plans.filter((p, i) => i + 1 <= limit);
 
@@ -24,7 +24,6 @@ export default function DisplayPlans() {
   return (
     <>
       <div className="plans-container">
-        <p>Plans</p>
         {!isPlans && <p className="no-plans-yet">No plans yet</p>}
         <ul className="plans-list">
           {plansToDisplay.map((p) => (

@@ -1,14 +1,9 @@
 .plans-container {
   width: 75%;
   color: #0e4551;
+  padding: 15px 0px;
 }
-.plans-container p {
-  font-size: 1.5rem;
-  font-style: italic;
-  text-align: center;
-  margin: 0;
-  padding: 5px;
-}
+
 .plans-container .no-plans-yet {
   font-size: 0.8rem;
   color: gray;
