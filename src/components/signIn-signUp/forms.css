@@ -64,12 +64,14 @@
 .google-signup,
 .facebook-signup {
   background-color: #fff;
-  cursor: pointer;
-  border: none;
   color: #000;
+  cursor: pointer;
+
+  border: none;
   width: 48%;
   padding: 5px;
   border-radius: 6px;
+
   display: flex;
   flex-direction: row;
   align-items: center;

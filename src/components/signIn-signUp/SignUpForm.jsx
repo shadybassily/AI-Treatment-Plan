@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import AnimatingBtn from "../animating-btn/AnimatingBtn";
 import "./forms.css";
 import ThirdPartySignUp from "./ThirdPartySignUp";
+
+//form field to loop over
 const fields = [
   {
     label: "Clinic's owner name",
@@ -29,7 +31,6 @@ const fields = [
     type: "password",
   },
 ];
-
 export default function SignUpForm() {
   return (
     <div className="sign-form-container">
@@ -43,7 +44,7 @@ export default function SignUpForm() {
         ))}
         <AnimatingBtn className="submit">Create account</AnimatingBtn>
       </form>
-      
+
       <div className="third-party-auth">
         -OR-
         <ThirdPartySignUp />

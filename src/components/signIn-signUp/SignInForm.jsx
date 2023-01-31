@@ -5,6 +5,20 @@ import { userSignIn } from "../../store/userSlice";
 import AnimatingBtn from "../animating-btn/AnimatingBtn";
 import ThirdPartySignUp from "./ThirdPartySignUp";
 
+//form field to loop over
+const fields = [
+  {
+    label: "Email",
+    placeholder: "Ex: twoth@example",
+    type: "text",
+  },
+
+  {
+    label: "Password",
+    placeholder: "****************",
+    type: "password",
+  },
+];
 export default function SignInForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,32 +30,17 @@ export default function SignInForm() {
     }
   });
 
-
-  //no restrictions for the sign in form 
-  // just implementing the functionality of login and logout
+  //no restrictions for the sign in form
+  //just implementing the functionality of login and logout
   const handleSignIn = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(userSignIn("hehe@hehe.com"));
-    navigate("/generate-plan")
+    navigate("/generate-plan");
   };
 
-  const fields = [
-    {
-      label: "Email",
-      placeholder: "Ex: twoth@example",
-      type: "text",
-    },
-
-    {
-      label: "Password",
-      placeholder: "****************",
-      type: "password",
-    },
-  ];
-  //
   return (
     <div className="sign-form-container">
-      <h2 className="sign-up-header">Sign in as a clinic  </h2>
+      <h2 className="form-header">Sign in as a clinic </h2>
       <form className="sign-form" onSubmit={handleSignIn}>
         {fields.map((f, i) => (
           <div className="field-container" key={i}>
@@ -52,8 +51,7 @@ export default function SignInForm() {
         <AnimatingBtn className="submit">Sign in</AnimatingBtn>
       </form>
 
-
-      <div className="third-party-auth" >
+      <div className="third-party-auth">
         -OR-
         <ThirdPartySignUp />
         <small>
@@ -62,9 +60,9 @@ export default function SignInForm() {
             Sign up
           </Link>
         </small>
-        <br/>
+        <br />
         <small>
-          You are a dentist? {" "}
+          You are a dentist?{" "}
           <Link to="/" className="link">
             Sign in
           </Link>
