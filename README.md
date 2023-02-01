@@ -12,7 +12,7 @@ A front end application that takes question inputs on the left side of the scree
 
 ## Notes:
 
-1. As there is no webhook to post to and get from to provide the output, Lorem ipsum text is used.
+1. As there is no webhook to post to and get from to provide the output, Lorem ipsum API text generator is used.
 
 2. Login/Logout functionality is handled by setting the userAuth state to true once logged in, and to false when logged out.
 
