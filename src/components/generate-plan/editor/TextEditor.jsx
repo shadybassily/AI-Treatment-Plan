@@ -9,13 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { savePlan } from "../../../store/plansSLice";
 
 export default function TextEditor({ output, formInputs }) {
-  //saved outputs
+  //saved plans
   const dispatch = useDispatch();
-  const outputs = useSelector((state) => state.plan.value);
+  const plans = useSelector((state) => state.plan.value);
 
   const { editorState, setEditorState, sendTextToEditor, toolbarOptions } =
     useTextEditor();
-
+  
   //display output in the editor
   useEffect(() => {
     sendTextToEditor(output.text);
@@ -28,7 +28,7 @@ export default function TextEditor({ output, formInputs }) {
     //and if we have valid data (to prevent saving plans written in the editor without valid form inputs)
     if ((editorContent.length !== 0) & (Object.keys(formInputs).length !== 0)) {
       const planToSave = {
-        id: outputs.length + 1,
+        id: plans.length + 1,
         text: editorContent,
         data: formInputs,
       };
@@ -48,7 +48,6 @@ export default function TextEditor({ output, formInputs }) {
 
   return (
     <div className="editor-container">
-   
       <AnimatingBtn className="save-button" onClick={handleSave}>
         Save
       </AnimatingBtn>

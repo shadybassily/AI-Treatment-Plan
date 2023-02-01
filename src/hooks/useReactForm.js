@@ -12,6 +12,7 @@ export default function useReactForm() {
 
   let invalidNumber = "This field must be a number";
   let positiveIntegerNumberError = "This field must be positive integer"
+  
   //a schema to determine the type,restrictions of the form inputs
   const schema = yup.object().shape({
     patientName: yup.string().required(requiredError).min(3,minCharacters).max(50),
