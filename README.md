@@ -21,5 +21,6 @@ A front end application that takes question inputs on the left side of the scree
 
 4. On the sideBar, when PLans are displayed, it will only show 4 plans, then `show more` link will appear, yet the logic is not implemented, just to demonstrate the saved plans.
 
-5. onClick on any plan in the side bar, the text will be displayed below, the plan is saved as plain text, so if images are included/bold/italic or any other option, will be shown. soon to work on that
+5. ~~onClick on any plan in the side bar, the text will be displayed below, the plan is saved as plain text, so if images are included/bold/italic or any other option, will not be shown. soon to work on that~~
 
+5. Now the edited text in the textEditor will save the applied styles, e.g BOLD, Italic, and images as well.
