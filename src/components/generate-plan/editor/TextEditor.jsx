@@ -8,14 +8,16 @@ import "./editor.css";
 import { useDispatch, useSelector } from "react-redux";
 import { savePlan } from "../../../store/plansSLice";
 
+import { stateToHTML } from "draft-js-export-html";
+
 export default function TextEditor({ output, formInputs }) {
   //saved plans
-  const dispatch = useDispatch();
   const plans = useSelector((state) => state.plan.value);
+  const dispatch = useDispatch();
 
   const { editorState, setEditorState, sendTextToEditor, toolbarOptions } =
     useTextEditor();
-  
+
   //display output in the editor
   useEffect(() => {
     sendTextToEditor(output.text);
@@ -23,19 +25,21 @@ export default function TextEditor({ output, formInputs }) {
 
   //save plan along with form inputs
   const handleSave = () => {
-    let editorContent = editorState.getCurrentContent().getPlainText();
+    let contentState = editorState.getCurrentContent();
+    let html = stateToHTML(contentState);
+
     //save if editor not empty (we get a respsone/output)
     //and if we have valid data (to prevent saving plans written in the editor without valid form inputs)
-    if ((editorContent.length !== 0) & (Object.keys(formInputs).length !== 0)) {
+    if ((contentState.length !== 0) & (Object.keys(formInputs).length !== 0)) {
       const planToSave = {
         id: plans.length + 1,
-        text: editorContent,
+        text: html,
         data: formInputs,
       };
       dispatch(savePlan(planToSave));
     }
   };
-  
+
   const props = {
     editorState,
     onEditorStateChange: setEditorState,

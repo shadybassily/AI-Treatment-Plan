@@ -11,6 +11,12 @@ export default function PlanOverview({ plan }) {
   if (isDeleted | !isPlans) {
     return <></>;
   } else {
-    return <div className="plan-overview">{plan.text}</div>;
+    //using dangerouslySetInnerHTML because plan.text will be in html format containing html tags
+    return (
+      <div
+        className="plan-overview"
+        dangerouslySetInnerHTML={{ __html: plan.text }}
+      />
+    );
   }
 }
