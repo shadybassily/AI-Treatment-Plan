@@ -4,8 +4,9 @@ A front end application that takes question inputs on the left side of the scree
 
 ### Dependencies 
 * `Vite` `npm create vite`, so to run the project, use `npm run dev`
-*  `react-hook-form` `yup` `@hookform/resolvers` 
+* `react-hook-form` `yup` `@hookform/resolvers` 
 * `react-draft-wysiwyg` rich TextEditor.
+* `draft-js-export-html`
 * `react-redux` `@reduxjs/toolkit`
 * `framer-motion` 
 * `react-icons`
