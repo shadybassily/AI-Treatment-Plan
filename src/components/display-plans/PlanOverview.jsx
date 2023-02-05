@@ -3,6 +3,8 @@ import "./plan-overview.css";
 
 export default function PlanOverview({ plan }) {
   const plans = useSelector((state) => state.plan.value);
+  console.log(plan)
+
   // in case a plan gets deleted, remove the overview as well
   const isDeleted =
     plans.filter((p) => p.id == plan?.id).length == 0 ? true : false;
