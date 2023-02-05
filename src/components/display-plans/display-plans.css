@@ -1,20 +1,25 @@
+
 .plans-container {
   width: 75%;
   color: #0e4551;
-  padding: 15px 0px;
-}
 
+}
+.plans-container a {
+  text-decoration: none;
+  color: inherit;
+}
 .plans-container .no-plans-yet {
   font-size: 0.8rem;
   color: gray;
+  text-align: center;
 }
 .plans-container .plans-list {
   padding: 0;
   margin: 0;
   font-weight: bold;
   text-transform: capitalize;
-  height: 25vh;
-  overflow: hidden;
+  height: 60vh;
+  overflow-y: scroll;
 }
 
 .plans-container .plans-list .plan {
@@ -24,12 +29,11 @@
   justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid var(--secondary);
-  /* test */
   position: relative;
 }
 /* background hover animation effect on plan start */
 .plans-container .plans-list .plan:after {
-  content: "";
+  content: '';
   position: absolute;
   width: 90%;
   height: 100%;
@@ -41,11 +45,13 @@
   transform-origin: bottom left;
   transition: transform 0.3s ease-out;
   z-index: -1;
+
 }
 
 .plans-container .plans-list .plan:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+  
 }
 /* hover animation effect on plan end */
 
@@ -64,6 +70,4 @@
   font-weight: bold;
 }
 
-/* .plans-container .plans-list .plan:hover {
-  background: linear-gradient(to right,#61b5a4, transparent);
-} */
+

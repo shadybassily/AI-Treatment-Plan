@@ -1,0 +1,13 @@
+.plan-overview {
+    background-color: #fff;
+    padding: 15px;
+    width: 75vw;
+}
+
+.plan-details{
+    padding: 20px;
+}
+
+.plan-details img {
+    width: 500px;
+}

@@ -18,8 +18,8 @@ export default function Form({ setOutput, setFormInputs }) {
     setOutput(response);
   };
 
-  if (isError) return <div>Error while fetching data</div>;
-  if (isLoading) return <div>...Loading</div>;
+  // if (isError) return <div>Error while fetching data</div>;
+  // if (isLoading) return <div>...Loading</div>;
 
   return (
     <section className="middle-section">

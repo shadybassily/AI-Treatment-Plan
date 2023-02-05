@@ -147,7 +147,7 @@ select {
 /* form end */
 
 
-@media (width < 930px) {
+@media (width < 1000px) {
   .middle-section  {
     width: 100%;
   }

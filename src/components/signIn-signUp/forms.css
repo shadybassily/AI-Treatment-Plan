@@ -79,14 +79,13 @@
 }
 
 .google-signup .google-icon {
-  font-size: 24px;
+  font-size: 20px;
 }
 .facebook-signup .fb-icon {
-  font-size: 24px;
+  font-size: 20px;
   color: blue;
 }
 .link {
-  text-decoration: none;
   color: var(--main);
 }
 /* third party sign up end*/

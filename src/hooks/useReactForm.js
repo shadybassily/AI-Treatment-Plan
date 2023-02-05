@@ -3,7 +3,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function useReactForm() {
+  let lettersOnlyRegex = /^[A-Za-z\s]*$/
   //error messages to use
+  let numbersInNamesError = "This field can't contain numbers."
   let requiredError = "This field is required";
   let minCharacters = "Minimum 3 characters"
 
@@ -15,11 +17,11 @@ export default function useReactForm() {
   
   //a schema to determine the type,restrictions of the form inputs
   const schema = yup.object().shape({
-    patientName: yup.string().required(requiredError).min(3,minCharacters).max(50),
+    patientName: yup.string().matches(lettersOnlyRegex, numbersInNamesError).required(requiredError).min(3,minCharacters).max(50),
     dentistEmail: yup.string().email(invalidEmail).required(requiredError),
     patientFeedback: yup.string().required(requiredError).min(3,minCharacters),
     dentistRecommendation: yup.string().required(requiredError).min(3,minCharacters),
-    dentistName: yup.string().required(requiredError).min(3,minCharacters).max(50,maxCharacters),
+    dentistName: yup.string().matches(lettersOnlyRegex, numbersInNamesError).required(requiredError).min(3,minCharacters).max(50,maxCharacters),
 
     //using min(0) instead of positive(), because inputs can be 0, and positive() will not accept 0 as a positive number
     treatmentCost: yup.number().min(0,positiveIntegerNumberError).required(requiredError).typeError(invalidNumber),

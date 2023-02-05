@@ -97,8 +97,12 @@
   cursor: pointer;
 }
 
-@media (width < 930px) {
+@media (width < 1000px) {
   .editor-container {
     width: 100%;
+  }
+
+  .save-button {
+    top: 22%;
   }
 }
