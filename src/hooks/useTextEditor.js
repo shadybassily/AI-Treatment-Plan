@@ -38,19 +38,18 @@ export default function useTextEditor() {
    };
 
    //to upload images from local machines
-   const [uploadedImages, setUploadedImages] = useState([]);
    const uploadImageCallback = (file) => {
       // long story short, every time we upload an image, we
       // need to save it to the state so we can get it's data
       // later when we decide what to do with it.
-      let LocallyUploadedImages = uploadedImages;
+      let LocallyUploadedImages = [];
       const imageObject = {
          file: file,
          localSrc: URL.createObjectURL(file),
       };
 
       LocallyUploadedImages.push(imageObject);
-      setUploadedImages(LocallyUploadedImages);
+      // setUploadedImages(LocallyUploadedImages);
       // We need to return a promise with the image src
       // the img src we will use here will be what's needed
       // to preview it in the browser. This will be different than what
