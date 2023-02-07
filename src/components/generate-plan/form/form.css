@@ -1,5 +1,5 @@
 .middle-section {
-  width: 35%;
+  width: 30%;
   height: 100vh;
   border-right: 1px solid var(--accent);
   background-color: #fff;
@@ -10,7 +10,6 @@
   border-bottom: 1px solid var(--accent);
   height: 15vh;
   position: relative;
-
 }
 .middle-section .header p {
   position: absolute;
@@ -18,7 +17,7 @@
 
   width: fit-content;
   height: 15%;
-  
+
   display: flex;
   align-items: flex-end;
   padding: 0 10px 5px;
@@ -40,7 +39,7 @@
 
   flex-wrap: wrap;
   justify-content: space-evenly;
- 
+
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -143,12 +142,10 @@ select {
 }
 /* error end */
 
-
 /* form end */
 
-
 @media (width < 1000px) {
-  .middle-section  {
+  .middle-section {
     width: 100%;
   }
 }

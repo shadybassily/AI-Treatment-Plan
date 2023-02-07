@@ -9,18 +9,19 @@ import { Link } from 'react-router-dom';
 const Plan = ({ plan, deletePlan }) => {
    const patientName = plan.data.patientName;
    return (
-      <Link to={`plan-details/${plan.id}`} >
-         <motion.li
-            initial={{ opacity: 0, x: -15 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="plan"
-         >
-            {patientName}
-            {/* delete plan*/}
-            <BsTrash className="delete" onClick={deletePlan} />
-         </motion.li>
-      </Link>
+      <div className="plan">
+         <Link to={`plan-details/${plan.id}`}>
+            <motion.li
+               initial={{ opacity: 0, x: -15 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5 }}
+            >
+               {patientName}
+            </motion.li>
+         </Link>
+         {/* delete plan*/}
+         <BsTrash className="delete" onClick={deletePlan} />
+      </div>
    );
 };
 

@@ -1,8 +1,6 @@
-
 .plans-container {
   width: 75%;
   color: #0e4551;
-
 }
 .plans-container a {
   text-decoration: none;
@@ -31,6 +29,9 @@
   border-bottom: 1px solid var(--secondary);
   position: relative;
 }
+.plans-container .plans-list .plan a {
+  width: 100%;
+}
 /* background hover animation effect on plan start */
 .plans-container .plans-list .plan:after {
   content: '';
@@ -45,13 +46,11 @@
   transform-origin: bottom left;
   transition: transform 0.3s ease-out;
   z-index: -1;
-
 }
 
 .plans-container .plans-list .plan:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
-  
 }
 /* hover animation effect on plan end */
 
@@ -69,5 +68,3 @@
   margin: 0 auto;
   font-weight: bold;
 }
-
-
