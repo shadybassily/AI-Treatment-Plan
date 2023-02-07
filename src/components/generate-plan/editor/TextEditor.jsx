@@ -10,7 +10,7 @@ import { savePlan } from "../../../store/plansSLice";
 
 import { stateToHTML } from "draft-js-export-html";
 
-export default function TextEditor({ output, formInputs }) {
+export default function TextEditor({ output="", formInputs }) {
   //saved plans
   const plans = useSelector((state) => state.plan.value);
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function TextEditor({ output, formInputs }) {
 
   //display output in the editor
   useEffect(() => {
-    sendTextToEditor(output.text);
+    sendTextToEditor(editorState,output.text);
   }, [output]);
 
   //save plan along with form inputs

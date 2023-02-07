@@ -1,4 +1,4 @@
-import { EditorState, Modifier } from 'draft-js';
+import { EditorState, Modifier, ContentState } from 'draft-js';
 import { useState } from 'react';
 // toolbar icons
 import bold from '../assets/editor-icons/bold.png';
@@ -12,22 +12,20 @@ export default function useTextEditor() {
       EditorState.createEmpty()
    );
 
-   const sendTextToEditor = (text) => {
-      setEditorState(insertText(text, editorState));
+   const sendTextToEditor = (editorState, text) => {
+      setEditorState(insertText(editorState, text));
    };
 
-   const insertText = (text, editorValue) => {
-      const currentContent = editorValue.getCurrentContent();
-      const currentSelection = editorValue.getSelection();
-
+   const insertText = (editorState, text) => {
+      const currentContent = editorState.getCurrentContent();
+      const currentSelection = editorState.getSelection();
       const newContent = Modifier.replaceText(
          currentContent,
          currentSelection,
          text
       );
-
       const newEditorState = EditorState.push(
-         editorValue,
+         editorState,
          newContent,
          'insert-characters'
       );

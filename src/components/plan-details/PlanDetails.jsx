@@ -8,7 +8,7 @@ export default function PlanDetails() {
    const planId = params.id;
    //getting the plan by id, using a memoized selector
    const plan = useSelector((state) => getPlan(state, planId))[0];
-   const {text} = plan
+   const text = plan?.text
 
    //using dangerouslySetInnerHTML because plan.text will be in html format containing html tags
    return (
