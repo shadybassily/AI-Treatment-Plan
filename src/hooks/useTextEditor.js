@@ -1,5 +1,7 @@
-import { EditorState, Modifier, ContentState } from 'draft-js';
+import { EditorState, Modifier } from 'draft-js';
 import { useState } from 'react';
+import { stateToHTML } from 'draft-js-export-html';
+
 // toolbar icons
 import bold from '../assets/editor-icons/bold.png';
 import italic from '../assets/editor-icons/italic.png';
@@ -35,6 +37,12 @@ export default function useTextEditor() {
       );
    };
 
+   //convert text editor content to HTML to save it
+   let contentState = editorState.getCurrentContent();
+   const convertToHTML = () => {
+      let html = stateToHTML(contentState);
+      return html;
+   };
    //to upload images from local machines
    const uploadImageCallback = (file) => {
       // long story short, every time we upload an image, we
@@ -78,5 +86,12 @@ export default function useTextEditor() {
          uploadCallback: uploadImageCallback,
       },
    };
-   return { editorState, setEditorState, sendTextToEditor, toolbarOptions };
+   return {
+      editorState,
+      toolbarOptions,
+      contentState,
+      setEditorState,
+      sendTextToEditor,
+      convertToHTML,
+   };
 }
