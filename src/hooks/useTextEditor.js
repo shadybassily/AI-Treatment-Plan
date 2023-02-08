@@ -1,7 +1,6 @@
-import { EditorState, Modifier } from 'draft-js';
+import { EditorState, Modifier, ContentState, SelectionState } from 'draft-js';
 import { useState } from 'react';
 import { stateToHTML } from 'draft-js-export-html';
-
 // toolbar icons
 import bold from '../assets/editor-icons/bold.png';
 import italic from '../assets/editor-icons/italic.png';
@@ -13,14 +12,28 @@ export default function useTextEditor() {
    const [editorState, setEditorState] = useState(() =>
       EditorState.createEmpty()
    );
+   const onEditorStateChange = (editorState) => {
+      setEditorState(editorState);
+   };
 
+   // !sending text to the editor to be displayed
    const sendTextToEditor = (editorState, text) => {
       setEditorState(insertText(editorState, text));
    };
 
    const insertText = (editorState, text) => {
       const currentContent = editorState.getCurrentContent();
-      const currentSelection = editorState.getSelection();
+      //selecting everything in the editor to be replaced
+      const firstBlock = currentContent.getFirstBlock()
+      const lastBlock = currentContent.getLastBlock()
+      const currentSelection = new SelectionState({
+         anchorKey: firstBlock.getKey(),
+         anchorOffset: 0,
+         focusKey: lastBlock.getKey(),
+         focusOffset: lastBlock.getLength(),
+         hasFocus: true
+     })
+      
       const newContent = Modifier.replaceText(
          currentContent,
          currentSelection,
@@ -31,15 +44,17 @@ export default function useTextEditor() {
          newContent,
          'insert-characters'
       );
+
       return EditorState.forceSelection(
          newEditorState,
          newContent.getSelectionAfter()
       );
    };
+   // !sending text to the editor to be displayed
 
    //convert text editor content to HTML to save it
-   let contentState = editorState.getCurrentContent();
    const convertToHTML = () => {
+      let contentState = editorState.getCurrentContent();
       let html = stateToHTML(contentState);
       return html;
    };
@@ -89,8 +104,7 @@ export default function useTextEditor() {
    return {
       editorState,
       toolbarOptions,
-      contentState,
-      setEditorState,
+      onEditorStateChange,
       sendTextToEditor,
       convertToHTML,
    };

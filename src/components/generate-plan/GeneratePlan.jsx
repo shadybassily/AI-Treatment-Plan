@@ -19,7 +19,6 @@ export default function GeneratePlan() {
       await refetch();
    };
 
-   console.log(isLoading,fetchStatus)
    return (
       <>
       {fetchStatus == "fetching" && <GeneratingLoader />}
