@@ -5,8 +5,7 @@ import italic from '../assets/editor-icons/italic.png';
 import underline from '../assets/editor-icons/underline.png';
 import undo from '../assets/editor-icons/undo.png';
 import redo from '../assets/editor-icons/redo.png';
-
-import { EditorState, Modifier, ContentState, SelectionState, convertToRaw } from 'draft-js';
+import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import htmlToDraft from 'html-to-draftjs';
 import draftToHtml from 'draftjs-to-html';
 
@@ -18,58 +17,13 @@ export default function useTextEditor() {
       setEditorState(editorState);
    };
 
-   // !sending text to the editor to be displayed
-   const sendTextToEditor = (editorState, text) => {
-      const currentContent = editorState.getCurrentContent();
-      const firstBlock = currentContent.getFirstBlock();
-      const lastBlock = currentContent.getLastBlock();
-      const currentSelection = new SelectionState({
-         anchorKey: firstBlock.getKey(),
-         anchorOffset: 0,
-         focusKey: lastBlock.getKey(),
-         focusOffset: lastBlock.getLength(),
-         hasFocus: true,
-      });
-
-      const newContent = Modifier.replaceText(
-         currentContent,
-         currentSelection,
-         text
-      );
-      const newEditorState = EditorState.push(
-         editorState,
-         newContent,
-         'insert-characters'
-      );
-      const finalState = EditorState.forceSelection(
-         newEditorState,
-         newContent.getSelectionAfter()
-      );
-      setEditorState(finalState);
-   };
-   //!insert html into draft js
-   const insertHTML = (data = '') => {
-      const currentContent = editorState.getCurrentContent();
-      const firstBlock = currentContent.getFirstBlock();
-      const lastBlock = currentContent.getLastBlock();
-      const currentSelection = new SelectionState({
-         anchorKey: firstBlock.getKey(),
-         anchorOffset: 0,
-         focusKey: lastBlock.getKey(),
-         focusOffset: lastBlock.getLength(),
-         hasFocus: true,
-      });
-
+   //!insert content into draft js
+   const displayInEditor = (data = '') => {
       let { contentBlocks, entityMap } = htmlToDraft(data);
-      let contentState = Modifier.replaceWithFragment(
-         editorState.getCurrentContent(),
-         currentSelection,
-         ContentState.createFromBlockArray(
-            contentBlocks,
-            entityMap
-         ).getBlockMap()
+      let contentState = ContentState.createFromBlockArray(
+         contentBlocks,
+         entityMap
       );
-
       setEditorState(EditorState.createWithContent(contentState));
    };
    //convert text editor content to HTML to save it
@@ -78,9 +32,10 @@ export default function useTextEditor() {
       const html = draftToHtml(rawContentState);
       return html;
    };
-
    //to upload images from local machines
-   const [uploadedImage, setUploadedImage] = useState([])
+   //must use a state to store locally uploaded images
+   //so they survive refreshes
+   const [uploadedImage, setUploadedImage] = useState([]);
    const uploadImageCallback = (file) => {
       // long story short, every time we upload an image, we
       // need to save it to the state so we can get it's data
@@ -92,7 +47,7 @@ export default function useTextEditor() {
       };
 
       LocallyUploadedImages.push(imageObject);
-      setUploadedImage(LocallyUploadedImages)
+      setUploadedImage(LocallyUploadedImages);
       // setUploadedImages(LocallyUploadedImages);
       // We need to return a promise with the image src
       // the img src we will use here will be what's needed
@@ -102,6 +57,7 @@ export default function useTextEditor() {
          resolve({ data: { link: imageObject.localSrc } });
       });
    };
+
    const toolbarOptions = {
       //selecting which options to show in the toolbar
       options: ['history', 'inline', 'image'],
@@ -128,13 +84,10 @@ export default function useTextEditor() {
       editorState,
       toolbarOptions,
       onEditorStateChange,
-      sendTextToEditor,
+      displayInEditor,
       convertToHTML,
-      insertHTML,
    };
 }
-
-
 
 // const insertText = (editorState, text) => {
 //    const currentContent = editorState.getCurrentContent();
@@ -163,4 +116,34 @@ export default function useTextEditor() {
 //       newEditorState,
 //       newContent.getSelectionAfter()
 //    );
+// };
+
+// // !sending chatGPT  to the editor to be displayed
+// const sendTextToEditor = (editorState, text) => {
+//    const currentContent = editorState.getCurrentContent();
+//    const firstBlock = currentContent.getFirstBlock();
+//    const lastBlock = currentContent.getLastBlock();
+//    const currentSelection = new SelectionState({
+//       anchorKey: firstBlock.getKey(),
+//       anchorOffset: 0,
+//       focusKey: lastBlock.getKey(),
+//       focusOffset: lastBlock.getLength(),
+//       hasFocus: true,
+//    });
+
+//    const newContent = Modifier.replaceText(
+//       currentContent,
+//       currentSelection,
+//       text
+//    );
+//    const newEditorState = EditorState.push(
+//       editorState,
+//       newContent,
+//       'insert-characters'
+//    );
+//    const finalState = EditorState.forceSelection(
+//       newEditorState,
+//       newContent.getSelectionAfter()
+//    );
+//    setEditorState(finalState);
 // };
