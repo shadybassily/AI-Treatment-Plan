@@ -1,12 +1,14 @@
-import { EditorState, Modifier, ContentState, SelectionState } from 'draft-js';
 import { useState } from 'react';
-import { stateToHTML } from 'draft-js-export-html';
 // toolbar icons
 import bold from '../assets/editor-icons/bold.png';
 import italic from '../assets/editor-icons/italic.png';
 import underline from '../assets/editor-icons/underline.png';
 import undo from '../assets/editor-icons/undo.png';
 import redo from '../assets/editor-icons/redo.png';
+
+import { EditorState, Modifier, ContentState, SelectionState, convertToRaw } from 'draft-js';
+import htmlToDraft from 'html-to-draftjs';
+import draftToHtml from 'draftjs-to-html';
 
 export default function useTextEditor() {
    const [editorState, setEditorState] = useState(() =>
@@ -18,22 +20,17 @@ export default function useTextEditor() {
 
    // !sending text to the editor to be displayed
    const sendTextToEditor = (editorState, text) => {
-      setEditorState(insertText(editorState, text));
-   };
-
-   const insertText = (editorState, text) => {
       const currentContent = editorState.getCurrentContent();
-      //selecting everything in the editor to be replaced
-      const firstBlock = currentContent.getFirstBlock()
-      const lastBlock = currentContent.getLastBlock()
+      const firstBlock = currentContent.getFirstBlock();
+      const lastBlock = currentContent.getLastBlock();
       const currentSelection = new SelectionState({
          anchorKey: firstBlock.getKey(),
          anchorOffset: 0,
          focusKey: lastBlock.getKey(),
          focusOffset: lastBlock.getLength(),
-         hasFocus: true
-     })
-      
+         hasFocus: true,
+      });
+
       const newContent = Modifier.replaceText(
          currentContent,
          currentSelection,
@@ -44,32 +41,58 @@ export default function useTextEditor() {
          newContent,
          'insert-characters'
       );
-
-      return EditorState.forceSelection(
+      const finalState = EditorState.forceSelection(
          newEditorState,
          newContent.getSelectionAfter()
       );
+      setEditorState(finalState);
    };
-   // !sending text to the editor to be displayed
+   //!insert html into draft js
+   const insertHTML = (data = '') => {
+      const currentContent = editorState.getCurrentContent();
+      const firstBlock = currentContent.getFirstBlock();
+      const lastBlock = currentContent.getLastBlock();
+      const currentSelection = new SelectionState({
+         anchorKey: firstBlock.getKey(),
+         anchorOffset: 0,
+         focusKey: lastBlock.getKey(),
+         focusOffset: lastBlock.getLength(),
+         hasFocus: true,
+      });
 
+      let { contentBlocks, entityMap } = htmlToDraft(data);
+      let contentState = Modifier.replaceWithFragment(
+         editorState.getCurrentContent(),
+         currentSelection,
+         ContentState.createFromBlockArray(
+            contentBlocks,
+            entityMap
+         ).getBlockMap()
+      );
+
+      setEditorState(EditorState.createWithContent(contentState));
+   };
    //convert text editor content to HTML to save it
    const convertToHTML = () => {
-      let contentState = editorState.getCurrentContent();
-      let html = stateToHTML(contentState);
+      const rawContentState = convertToRaw(editorState.getCurrentContent());
+      const html = draftToHtml(rawContentState);
       return html;
    };
+
    //to upload images from local machines
+   const [uploadedImage, setUploadedImage] = useState([])
    const uploadImageCallback = (file) => {
       // long story short, every time we upload an image, we
       // need to save it to the state so we can get it's data
       // later when we decide what to do with it.
-      let LocallyUploadedImages = [];
+      let LocallyUploadedImages = uploadedImage;
       const imageObject = {
          file: file,
          localSrc: URL.createObjectURL(file),
       };
 
       LocallyUploadedImages.push(imageObject);
+      setUploadedImage(LocallyUploadedImages)
       // setUploadedImages(LocallyUploadedImages);
       // We need to return a promise with the image src
       // the img src we will use here will be what's needed
@@ -107,5 +130,37 @@ export default function useTextEditor() {
       onEditorStateChange,
       sendTextToEditor,
       convertToHTML,
+      insertHTML,
    };
 }
+
+
+
+// const insertText = (editorState, text) => {
+//    const currentContent = editorState.getCurrentContent();
+//    const firstBlock = currentContent.getFirstBlock();
+//    const lastBlock = currentContent.getLastBlock();
+//    const currentSelection = new SelectionState({
+//       anchorKey: firstBlock.getKey(),
+//       anchorOffset: 0,
+//       focusKey: lastBlock.getKey(),
+//       focusOffset: lastBlock.getLength(),
+//       hasFocus: true,
+//    });
+
+//    const newContent = Modifier.replaceText(
+//       currentContent,
+//       currentSelection,
+//       text
+//    );
+//    const newEditorState = EditorState.push(
+//       editorState,
+//       newContent,
+//       'insert-characters'
+//    );
+
+//    return EditorState.forceSelection(
+//       newEditorState,
+//       newContent.getSelectionAfter()
+//    );
+// };

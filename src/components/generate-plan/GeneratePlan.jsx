@@ -10,9 +10,7 @@ export default function GeneratePlan() {
    const {
       data: chatGPTResponse,
       refetch,
-      isLoading,
-      isError,
-      fetchStatus
+      fetchStatus,
    } = fetchResponse(formInputs);
 
    const fetchchatGPTResponse = async () => {
@@ -21,13 +19,16 @@ export default function GeneratePlan() {
 
    return (
       <>
-      {fetchStatus == "fetching" && <GeneratingLoader />}
+         {fetchStatus == 'fetching' && <GeneratingLoader />}
 
          <Form
             setFormInputs={setFormInputs}
             fetchchatGPTResponse={fetchchatGPTResponse}
          />
-         <TextEditor output={chatGPTResponse} formInputs={formInputs} />
+         <TextEditor
+            chatGPTResponse={chatGPTResponse}
+            formInputs={formInputs}
+         />
       </>
    );
 }

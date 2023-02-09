@@ -25,12 +25,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
   border-bottom: 1px solid var(--secondary);
   position: relative;
 }
-.plans-container .plans-list .plan a {
+.plans-container .plans-list .plan .selected-plan{
+  background-image: linear-gradient(to right, #073c3266, transparent);
+}
+.plans-container .plans-list .plan li {
   width: 100%;
+  padding: 10px;
 }
 /* background hover animation effect on plan start */
 .plans-container .plans-list .plan:after {

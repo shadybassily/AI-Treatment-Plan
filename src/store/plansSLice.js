@@ -16,6 +16,7 @@ const getPlan = createSelector(
 
 const initialState = {
    value: [],
+   selectedPlan: null,
 };
 
 export const plansSlice = createSlice({
@@ -28,11 +29,14 @@ export const plansSlice = createSlice({
       deletePlan: (state, action) => {
          state.value = state.value.filter((p) => p.id !== action.payload);
       },
+      selectPlan: (state, action) => {
+         state.selectedPlan = action.payload;
+      },
    },
 });
 
 export { getPlan };
 
-export const { savePlan, deletePlan } = plansSlice.actions;
+export const { savePlan, deletePlan, selectPlan } = plansSlice.actions;
 
 export default plansSlice.reducer;

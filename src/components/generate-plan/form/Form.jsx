@@ -4,7 +4,6 @@ import AnimatingBtn from '../../animating-btn/AnimatingBtn';
 
 import useReactForm from '../../../hooks/useReactForm';
 import './form.css';
-
 export default function Form({ setFormInputs, fetchchatGPTResponse }) {
    const { register, handleSubmit, errors } = useReactForm({});
    //save the form fields, and fetch the response
