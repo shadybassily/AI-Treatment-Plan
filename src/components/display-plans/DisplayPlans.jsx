@@ -44,7 +44,7 @@ export default function DisplayPlans() {
 
    const handleDeletePlan = (id) => {
       // if plan to delete is the selectedPlan
-      if ((selectPlan.id = id)) {
+      if (selectedPlan?.id == id) {
          dispatch(selectPlan(null));
       }
       dispatch(deletePlan(id));

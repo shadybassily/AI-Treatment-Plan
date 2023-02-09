@@ -57,7 +57,7 @@ export default function useTextEditor() {
          resolve({ data: { link: imageObject.localSrc } });
       });
    };
-
+   
    const toolbarOptions = {
       //selecting which options to show in the toolbar
       options: ['history', 'inline', 'image'],

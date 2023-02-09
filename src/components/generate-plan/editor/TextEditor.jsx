@@ -46,7 +46,7 @@ export default function TextEditor({ chatGPTResponse, formInputs }) {
             data: formInputs,
          };
          dispatch(savePlan(planToSave));
-         dispatch(selectPlan(planToSave))
+         dispatch(selectPlan(planToSave));
       }
    };
 
