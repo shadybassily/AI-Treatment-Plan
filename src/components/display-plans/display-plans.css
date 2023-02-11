@@ -28,34 +28,14 @@
   border-bottom: 1px solid var(--secondary);
   position: relative;
 }
-.plans-container .plans-list .plan .selected-plan{
+.plans-container .plans-list .plan .selected-plan {
   background-image: linear-gradient(to right, #073c3266, transparent);
 }
+
 .plans-container .plans-list .plan li {
   width: 100%;
   padding: 10px;
 }
-/* background hover animation effect on plan start */
-.plans-container .plans-list .plan:after {
-  content: '';
-  position: absolute;
-  width: 90%;
-  height: 100%;
-  bottom: 0;
-  left: 0;
-
-  transform: scaleX(0);
-  background: linear-gradient(to right, #073c32, transparent);
-  transform-origin: bottom left;
-  transition: transform 0.3s ease-out;
-  z-index: -1;
-}
-
-.plans-container .plans-list .plan:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-/* hover animation effect on plan end */
 
 .plans-container .plans-list .plan .delete {
   cursor: pointer;

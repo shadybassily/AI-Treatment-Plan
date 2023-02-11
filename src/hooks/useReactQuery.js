@@ -12,7 +12,7 @@ const getRespones = async () => {
    ).then((res) => res.data);
 };
 
-export const fetchResponse = () => {
+export const fetchChatGPTResponse = () => {
    return useQuery({
       queryKey: ['chatGPT-response'],
       queryFn: getRespones,

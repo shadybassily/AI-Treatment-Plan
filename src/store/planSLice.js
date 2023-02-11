@@ -1,8 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 
-//selectors
-
-const getPlan = createSelector(
+// selectors
+const getSelectedPlan = createSelector(
    [
       // gettig all the plans
       (state) => state.plan.value,
@@ -10,7 +9,7 @@ const getPlan = createSelector(
       (state, id) => id,
    ],
    (plans, id) => {
-      return plans.filter((plan) => plan.id == id);
+      return plans.filter((plan) => plan.id == id)[0];
    }
 );
 
@@ -19,7 +18,7 @@ const initialState = {
    selectedPlan: null,
 };
 
-export const plansSlice = createSlice({
+export const planSlice = createSlice({
    name: 'plan',
    initialState,
    reducers: {
@@ -35,8 +34,6 @@ export const plansSlice = createSlice({
    },
 });
 
-export { getPlan };
-
-export const { savePlan, deletePlan, selectPlan } = plansSlice.actions;
-
-export default plansSlice.reducer;
+export { getSelectedPlan };
+export const { savePlan, deletePlan, selectPlan } = planSlice.actions;
+export default planSlice.reducer;

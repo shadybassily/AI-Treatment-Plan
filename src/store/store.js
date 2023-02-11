@@ -1,8 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import planReducer from './plansSLice';
+import planReducer from './planSLice';
 import userReducer from './userSlice';
 //persist
-import logger from 'redux-logger';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 

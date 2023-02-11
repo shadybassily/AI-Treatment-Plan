@@ -2,9 +2,19 @@
     background-color: #fff;
     padding: 15px;
     width: 75vw;
+    border: 1px solid blue;
+}
+
+.plan-details{
+    display: flex;
+    flex-direction: row-reverse;
+    border: 1px solid;
 }
 
 .plan-details{
     padding: 20px;
 }
 
+.plan-details img {
+    border: 4px solid red;
+}

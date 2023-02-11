@@ -1,17 +1,11 @@
 import { questions } from '../../../hooks/useReactForm';
 import Question from './Question';
 import AnimatingBtn from '../../animating-btn/AnimatingBtn';
-
 import useReactForm from '../../../hooks/useReactForm';
 import './form.css';
-export default function Form({ setFormInputs, fetchchatGPTResponse }) {
-   const { register, handleSubmit, errors } = useReactForm({});
-   //save the form fields, and fetch the response
-   const onSubmit = (data) => {
-      setFormInputs(data);
-      fetchchatGPTResponse()
-   };
 
+export default function Form({ onSubmit }) {
+   const { register, handleSubmit, setValue, errors } = useReactForm();
    return (
       <section className="middle-section">
          {/* head */}
@@ -22,10 +16,11 @@ export default function Form({ setFormInputs, fetchchatGPTResponse }) {
          <form onSubmit={handleSubmit(onSubmit)} className="form">
             {questions.map((q) => (
                <Question
-                  question={q}
                   key={q.id}
-                  register={register(q.name)}
-                  error={errors?.[q.name]?.message}
+                  question={q}
+                  register={register}
+                  error={errors}
+                  setValue={setValue}
                />
             ))}
             <AnimatingBtn type="submit" className="generate">

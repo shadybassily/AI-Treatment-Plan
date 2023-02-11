@@ -16,9 +16,9 @@ export default function SideBar() {
     <div className="sidebar">
       <WebsiteHeader />
       <DisplayPlans />
-      <Link to="/" onClick={handleLogout}>
+      {/* <Link to="/" onClick={handleLogout}>
         Sign out
-      </Link>
+      </Link> */}
     </div>
   );
 }
