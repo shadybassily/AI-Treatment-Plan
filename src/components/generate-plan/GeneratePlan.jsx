@@ -6,19 +6,22 @@ import { fetchChatGPTResponse } from '../../hooks/useReactQuery';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePlan, selectPlan } from '../../store/planSLice';
 
+//random id
+import { nanoid } from 'nanoid/non-secure'
+
 export default function GeneratePlan() {
    const dispatch = useDispatch();
-   const plans = useSelector((state) => state.plan.value);
    const selectedPlan = useSelector((state) => state.plan.selectedPlan);
    
    const [formInputs, setFormInputs] = useState();
-   const { data, refetch, fetchStatus } = fetchChatGPTResponse(formInputs);
+   const { data: response, refetch, fetchStatus } = fetchChatGPTResponse(formInputs);
 
    const generatePlan = (formInputs) => {
-      let text = data?.text
+      let chatGPTResponse = response?.text
+      const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
       const planToSave = {
-         id: plans.length + 1,
-         text,
+         id,
+         chatGPTResponse,
          formData: formInputs,
       };
       dispatch(savePlan(planToSave));
@@ -34,16 +37,16 @@ export default function GeneratePlan() {
    useEffect(() => {
       // the returned data (response) will initially be undefined
       // wait till the fetched data is valid
-      if (data !== undefined) {
+      if (response !== undefined) {
          generatePlan(formInputs);
       }
-   }, [data]);
+   }, [response]);
 
    return (
       <>
          {fetchStatus == 'fetching' && <GeneratingLoader />}
          <Form onSubmit={onSubmit} selectedPlan={selectedPlan} />
-         <TextEditor chatGPTResponse={data} selectedPlan={selectedPlan}/>
+         <TextEditor chatGPTResponse={response} selectedPlan={selectedPlan}/>
       </>
    );
 }

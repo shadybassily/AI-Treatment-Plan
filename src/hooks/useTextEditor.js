@@ -18,8 +18,8 @@ export default function useTextEditor() {
    };
 
    //!insert content into draft js
-   const displayInEditor = (data = '') => {
-      let { contentBlocks, entityMap } = htmlToDraft(data);
+   const displayInEditor = (content = '') => {
+      let { contentBlocks, entityMap } = htmlToDraft(content);
       let contentState = ContentState.createFromBlockArray(
          contentBlocks,
          entityMap

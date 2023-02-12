@@ -22,7 +22,7 @@ export default function TextEditor({ selectedPlan }) {
 
    //displaying selected plan in the Editor
    useEffect(() => {
-      displayInEditor(selectedPlan?.text);
+      displayInEditor(selectedPlan?.chatGPTResponse);
    }, [selectedPlan]);
 
    const editorProps = {
@@ -35,11 +35,11 @@ export default function TextEditor({ selectedPlan }) {
    const handleSaveUpdatedPlan = () => {
       //save only if we have selectedPlan active
       if (selectedPlan.id !== '') {
-         let updatedPlan = convertToHTML();
+         let updatedContent = convertToHTML();
 
          let newPlan = {
             ...selectedPlan,
-            text : updatedPlan
+            chatGPTResponse : updatedContent
          }
          dispatch(updatePlan(newPlan))
          console.log(newPlan)

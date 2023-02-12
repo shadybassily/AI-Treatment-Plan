@@ -55,6 +55,7 @@ const Plan = ({ plan }) => {
 
 export default function DisplayPlans() {
    const plans = useSelector((state) => state.plan.value);
+   console.log(plans)
    return (
       <div className="plans-container">
          {plans.length == 0 ? (
