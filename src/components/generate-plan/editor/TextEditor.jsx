@@ -42,7 +42,6 @@ export default function TextEditor({ selectedPlan }) {
             chatGPTResponse : updatedContent
          }
          dispatch(updatePlan(newPlan))
-         console.log(newPlan)
       }
    };
    return (
