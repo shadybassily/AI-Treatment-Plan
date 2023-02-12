@@ -10,7 +10,7 @@ export default function GeneratePlan() {
    const dispatch = useDispatch();
    const plans = useSelector((state) => state.plan.value);
    const selectedPlan = useSelector((state) => state.plan.selectedPlan);
-   console.log(selectedPlan)
+   
    const [formInputs, setFormInputs] = useState();
    const { data, refetch, fetchStatus } = fetchChatGPTResponse(formInputs);
 

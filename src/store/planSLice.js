@@ -21,12 +21,12 @@ const dummyPlan = {
       dentistName: '',
       dentistRecommendation: '',
       discount: '',
-      monthsWithZeroInterest: "",
+      monthsWithZeroInterest: '',
       patientFeedback: '',
       patientName: '',
-      treatmentCost: "",
+      treatmentCost: '',
       treatmentTime: '1 hour',
-      comments:""
+      comments: '',
    },
 };
 const initialState = {
@@ -41,6 +41,15 @@ export const planSlice = createSlice({
       savePlan: (state, action) => {
          state.value = [action.payload, ...state.value];
       },
+      updatePlan: (state, action) => {
+         let updatedPlan = action.payload;
+         state.value = state.value.map((p) => {
+            if (updatedPlan.id == p.id) {
+               return updatedPlan;
+            }
+            return p;
+         });
+      },
       deletePlan: (state, action) => {
          state.value = state.value.filter((p) => p.id !== action.payload);
       },
@@ -51,5 +60,5 @@ export const planSlice = createSlice({
 });
 
 export { getPlanById, dummyPlan };
-export const { savePlan, deletePlan, selectPlan } = planSlice.actions;
+export const { savePlan, deletePlan, selectPlan, updatePlan } = planSlice.actions;
 export default planSlice.reducer;
