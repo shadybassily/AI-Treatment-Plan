@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deletePlan } from '../../store/planSLice';
 import { motion } from 'framer-motion';
 import { BsTrash } from 'react-icons/bs';
-import { selectPlan } from '../../store/planSLice';
+import { selectPlan, dummyPlan } from '../../store/planSLice';
 import './display-plans.css';
 
 const Plan = ({ plan }) => {
@@ -15,7 +15,7 @@ const Plan = ({ plan }) => {
    const handleDeletePlan = (id) => {
       // if plan to delete is the selectedPlan
       if (selectedPlan?.id == id) {
-         dispatch(selectPlan(null));
+         dispatch(selectPlan(dummyPlan));
       }
       dispatch(deletePlan(id));
    };
@@ -28,11 +28,12 @@ const Plan = ({ plan }) => {
       animate: { opacity: 1, x: 0 },
       transition: { duration: 0.5 },
    };
+
    return (
       <div className="plan">
          <motion.li
-            className={isSelected ? 'selected-plan' : ''}
             {...animationProps}
+            className={isSelected ? 'selected-plan' : ''}
             onClick={() => {
                handleSelectPlan(plan);
             }}
@@ -50,6 +51,7 @@ const Plan = ({ plan }) => {
       </div>
    );
 };
+
 
 export default function DisplayPlans() {
    const plans = useSelector((state) => state.plan.value);

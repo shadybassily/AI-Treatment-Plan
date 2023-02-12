@@ -1,25 +1,28 @@
+//hooks
 import { useEffect } from 'react';
+import useTextEditor from '../../../hooks/useTextEditor';
 //components
 import { Editor } from 'react-draft-wysiwyg';
 import AnimatingBtn from '../../animating-btn/AnimatingBtn';
-//hooks
-import useTextEditor from '../../../hooks/useTextEditor';
 //styling
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './editor.css';
-import { useSelector } from 'react-redux';
 
-export default function TextEditor() {
-   const { editorState, toolbarOptions, onEditorStateChange, displayInEditor } =
-      useTextEditor();
-   const selectedPlan = useSelector((state) => state.plan.selectedPlan);
-
+export default function TextEditor({selectedPlan}) {
+   const {
+      editorState,
+      toolbarOptions,
+      onEditorStateChange,
+      displayInEditor,
+      convertToHTML,
+   } = useTextEditor();
+   
    //displaying selected plan in the Editor
    useEffect(() => {
       displayInEditor(selectedPlan?.text);
    }, [selectedPlan]);
 
-   const toolbarProps = {
+   const editorProps = {
       editorState,
       onEditorStateChange: onEditorStateChange,
       placeholder: 'Your plan will be generated here',
@@ -29,7 +32,7 @@ export default function TextEditor() {
    return (
       <div className="editor-container">
          <AnimatingBtn className="save-button">Save</AnimatingBtn>
-         <Editor {...toolbarProps} />
+         <Editor {...editorProps} />
       </div>
    );
 }

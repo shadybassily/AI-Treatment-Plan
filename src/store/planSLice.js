@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 // selectors
-const getSelectedPlan = createSelector(
+const getPlanById = createSelector(
    [
       // gettig all the plans
       (state) => state.plan.value,
@@ -13,9 +13,25 @@ const getSelectedPlan = createSelector(
    }
 );
 
+const dummyPlan = {
+   id: '',
+   text: '',
+   formData: {
+      dentistEmail: '',
+      dentistName: '',
+      dentistRecommendation: '',
+      discount: '',
+      monthsWithZeroInterest: "",
+      patientFeedback: '',
+      patientName: '',
+      treatmentCost: "",
+      treatmentTime: '1 hour',
+      comments:""
+   },
+};
 const initialState = {
    value: [],
-   selectedPlan: null,
+   selectedPlan: dummyPlan,
 };
 
 export const planSlice = createSlice({
@@ -34,6 +50,6 @@ export const planSlice = createSlice({
    },
 });
 
-export { getSelectedPlan };
+export { getPlanById, dummyPlan };
 export const { savePlan, deletePlan, selectPlan } = planSlice.actions;
 export default planSlice.reducer;
