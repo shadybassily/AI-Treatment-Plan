@@ -13,6 +13,7 @@ import './editor.css';
 export default function TextEditor({ selectedPlan }) {
    const dispatch = useDispatch()
    const {
+      uploadedImage,
       editorState,
       toolbarOptions,
       onEditorStateChange,

@@ -3,7 +3,7 @@ import { deletePlan } from '../../store/planSLice';
 import { motion } from 'framer-motion';
 import { BsTrash } from 'react-icons/bs';
 import { selectPlan, dummyPlan } from '../../store/planSLice';
-import './display-plans.css';
+import { useState } from 'react';
 
 const Plan = ({ plan }) => {
    const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Plan = ({ plan }) => {
    };
 
    return (
-      <div className="plan">
+      <div className="border flex">
          <motion.li
             {...animationProps}
             className={isSelected ? 'selected-plan' : ''}
@@ -53,18 +53,36 @@ const Plan = ({ plan }) => {
 };
 
 
+
+
 export default function DisplayPlans() {
    const plans = useSelector((state) => state.plan.value);
+
+   const [searchInput, setSearchInput] = useState('');
+   let results = plans.filter((p) => p.formData.patientName.includes(searchInput));
+   let whatToDisplay = searchInput === "" ? plans : results
+
    return (
-      <div className="plans-container">
+      <div className="border border-black">
          {plans.length == 0 ? (
-            <p className="no-plans-yet">No plans yet</p>
+            <p className="border border-black">No plans yet</p>
          ) : (
-            <ul className="plans-list">
-               {plans.map((p) => (
-                  <Plan key={p.id} plan={p} />
-               ))}
-            </ul>
+            <>
+               <input
+                  className="border border-black"
+                  placeholder='search...'
+                  value={searchInput}
+                  onChange={(e) => {
+                     setSearchInput(e.target.value);
+                  }}
+               />
+
+               <ul className="border border-black ">
+                  {whatToDisplay.map((p) => (
+                     <Plan key={p.id} plan={p} />
+                  ))}
+               </ul>
+            </>
          )}
       </div>
    );

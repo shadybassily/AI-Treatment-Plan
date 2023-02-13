@@ -37,6 +37,7 @@ export default function useTextEditor() {
    //so they survive refreshes
    const [uploadedImage, setUploadedImage] = useState([]);
    const uploadImageCallback = (file) => {
+     
       // long story short, every time we upload an image, we
       // need to save it to the state so we can get it's data
       // later when we decide what to do with it.
@@ -81,6 +82,7 @@ export default function useTextEditor() {
       },
    };
    return {
+      uploadedImage,
       editorState,
       toolbarOptions,
       onEditorStateChange,
