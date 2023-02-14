@@ -30,10 +30,15 @@ const Plan = ({ plan }) => {
    };
 
    return (
-      <div className="border flex">
+      <div
+         className={`flex items-center cursor-pointer p-1 transition-all ease-in-out ${
+            isSelected &&
+            'border-r-4 border-secondary bg-gradient-to-l from-transparent to-lighter'
+         }`}
+      >
          <motion.li
             {...animationProps}
-            className={isSelected ? 'selected-plan' : ''}
+            className="w-full p-2 capitalize text-sm font-medium text-black "
             onClick={() => {
                handleSelectPlan(plan);
             }}
@@ -43,7 +48,7 @@ const Plan = ({ plan }) => {
 
          {/* delete plan*/}
          <BsTrash
-            className="delete"
+            className="text-lg text-secondary h-full"
             onClick={() => {
                handleDeletePlan(plan.id);
             }}
@@ -52,32 +57,31 @@ const Plan = ({ plan }) => {
    );
 };
 
-
-
-
 export default function DisplayPlans() {
    const plans = useSelector((state) => state.plan.value);
 
    const [searchInput, setSearchInput] = useState('');
-   let results = plans.filter((p) => p.formData.patientName.includes(searchInput));
-   let whatToDisplay = searchInput === "" ? plans : results
+   let results = plans.filter((p) =>
+      p.formData.patientName.includes(searchInput)
+   );
+   let whatToDisplay = searchInput === '' ? plans : results;
 
    return (
-      <div className="border border-black">
+      <div className="flex flex-col gap-y-4 w-4/5 ">
          {plans.length == 0 ? (
-            <p className="border border-black">No plans yet</p>
+            <p className="">No plans yet</p>
          ) : (
             <>
                <input
-                  className="border border-black"
-                  placeholder='search...'
+                  className="w-full tracking-wider font-medium outline-none p-2 rounded text-sm text-secondary"
+                  placeholder="search..."
                   value={searchInput}
                   onChange={(e) => {
                      setSearchInput(e.target.value);
                   }}
                />
 
-               <ul className="border border-black ">
+               <ul className="flex flex-col gap-y-1.5">
                   {whatToDisplay.map((p) => (
                      <Plan key={p.id} plan={p} />
                   ))}
