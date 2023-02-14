@@ -11,11 +11,12 @@ import { savePlan, selectPlan } from '../../../store/planSLice';
 import useAxios from '../../../hooks/useAxios';
 import { nanoid } from 'nanoid/non-secure';
 import './form.css';
+import { useEffect } from 'react';
 
 export default function Form({ selectedPlan }) {
    const dispatch = useDispatch();
    const { register, handleSubmit, setValue, errors } = useReactForm();
-   const [fetchChatGPTResponse, isLoading] = useAxios()
+   const [fetchChatGPTResponse, isLoading] = useAxios();
 
    const generatePlan = (response, formInputs) => {
       let chatGPTResponse = response?.text;
@@ -27,14 +28,19 @@ export default function Form({ selectedPlan }) {
       };
       dispatch(savePlan(planToSave));
       dispatch(selectPlan(planToSave));
-   }
-
-   const onSubmit = async (formInputs) => {
-      let response = await fetchChatGPTResponse()
-      generatePlan(response, formInputs)
    };
 
-   console.log("form component")
+   const onSubmit = async (formInputs) => {
+      let response = await fetchChatGPTResponse();
+      generatePlan(response, formInputs);
+   };
+
+   useEffect(() => {
+      Object.entries(selectedPlan.formData).forEach(([name, value]) => {
+         setValue(name, `${value}`);
+      });
+   }, [selectedPlan]);
+
    return (
       <>
          {isLoading && <GeneratingLoader />}
