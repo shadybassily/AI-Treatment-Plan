@@ -31,9 +31,8 @@ const Plan = ({ plan }) => {
 
    return (
       <div
-         className={`flex items-center cursor-pointer p-1 transition-all ease-in-out ${
-            isSelected &&
-            'border-r-4 border-secondary bg-gradient-to-l from-transparent to-lighter'
+         className={`flex items-center w-11/12 cursor-pointer p-1 transition-all ease-in-out ${
+            isSelected && 'bg-gradient-to-l from-transparent to-lighter'
          }`}
       >
          <motion.li
@@ -67,7 +66,7 @@ export default function DisplayPlans() {
    let whatToDisplay = searchInput === '' ? plans : results;
 
    return (
-      <div className="flex flex-col gap-y-4 w-4/5 ">
+      <div className="flex flex-col gap-y-4 ">
          {plans.length == 0 ? (
             <p className="">No plans yet</p>
          ) : (
@@ -81,7 +80,7 @@ export default function DisplayPlans() {
                   }}
                />
 
-               <ul className="flex flex-col gap-y-1.5">
+               <ul className="flex flex-col gap-y-1.5 h-80 overflow-y-scroll w-full items-center">
                   {whatToDisplay.map((p) => (
                      <Plan key={p.id} plan={p} />
                   ))}
