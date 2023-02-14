@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function Question({question, register, error, setValue, selectedPlan}) {
+export default function Question({question, register, error, selectedPlan}) {
    const { id, name, label, type, placeHolder } = question;
    const errorMessage = error[name]?.message;
    //3 types of questions
@@ -10,7 +10,6 @@ export default function Question({question, register, error, setValue, selectedP
       case 'text':
          //errors can only occure on input tags so applying red border if there are any.
          //textarea is optional, select can't cause an error
-         // setValue(name, selectedPlan?.formData?.[name])
          input = (
             <input
                placeholder={placeHolder}
@@ -44,9 +43,9 @@ export default function Question({question, register, error, setValue, selectedP
          break;
    }
 
-   useEffect(() => {
-      setValue(name, `${selectedPlan?.formData[name]}`);
-   }, [selectedPlan]);
+   // useEffect(() => {
+   //    setValue(name, `${selectedPlan?.formData[name]}`);
+   // }, [selectedPlan]);
 
    return (
       <div className="question">
