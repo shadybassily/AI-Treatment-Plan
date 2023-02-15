@@ -10,7 +10,6 @@ import useReactForm from '../../../hooks/useReactForm';
 import { savePlan, selectPlan } from '../../../store/planSLice';
 import useAxios from '../../../hooks/useAxios';
 import { nanoid } from 'nanoid/non-secure';
-import './form.css';
 import { useEffect } from 'react';
 
 export default function Form({ selectedPlan }) {
@@ -44,13 +43,18 @@ export default function Form({ selectedPlan }) {
    return (
       <>
          {isLoading && <GeneratingLoader />}
-         <section className="middle-section">
+         <section className="bg-white w-4/12 flex flex-col  h-screen">
             {/* head */}
-            <div className="header">
-               <p>Please answer these questions to generate your plan</p>
+            <div className="h-60 flex items-end border-b-2 border-accent ">
+               <p className="border-b-2 border-secondary text-sm text-secondary font-medium p-1">
+                  Please answer these questions to generate your plan
+               </p>
             </div>
             {/* form */}
-            <form onSubmit={handleSubmit(onSubmit)} className="form">
+            <form
+               onSubmit={handleSubmit(onSubmit)}
+               className="border border-accent flex flex-wrap justify-between gap-y-7 p-8 overflow-y-scroll"
+            >
                {questions.map((q) => (
                   <Question
                      key={q.id}
@@ -62,7 +66,10 @@ export default function Form({ selectedPlan }) {
                   />
                ))}
 
-               <AnimatingBtn type="submit" className="generate">
+               <AnimatingBtn
+                  type="submit"
+                  className="w-full bg-secondary text-white font-medium p-2"
+               >
                   Generate My Plan
                </AnimatingBtn>
             </form>

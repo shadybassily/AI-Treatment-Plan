@@ -26,6 +26,7 @@ const dummyPlan = {
       patientName: '',
       treatmentCost: '',
       treatmentTime: '1 hour',
+      treatmentType: 'Consultation',
       comments: '',
    },
 };
@@ -60,5 +61,6 @@ export const planSlice = createSlice({
 });
 
 export { getPlanById, dummyPlan };
-export const { savePlan, deletePlan, selectPlan, updatePlan } = planSlice.actions;
+export const { savePlan, deletePlan, selectPlan, updatePlan } =
+   planSlice.actions;
 export default planSlice.reducer;
