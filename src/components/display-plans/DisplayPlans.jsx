@@ -1,92 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { deletePlan } from '../../store/planSLice';
-import { motion } from 'framer-motion';
-import { BsTrash } from 'react-icons/bs';
-import { selectPlan, dummyPlan } from '../../store/planSLice';
+//components
+import Search from '../Search';
+import Plans from './Plans';
+//hooks
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
-
-const Plan = ({ plan }) => {
-   const dispatch = useDispatch();
-   const selectedPlan = useSelector((state) => state.plan.selectedPlan);
-
-   const patientName = plan.formData.patientName;
-   const isSelected = selectedPlan?.id === plan.id ? true : false;
-
-   const handleDeletePlan = (id) => {
-      // if plan to delete is the selectedPlan
-      if (selectedPlan?.id == id) {
-         dispatch(selectPlan(dummyPlan));
-      }
-      dispatch(deletePlan(id));
-   };
-   const handleSelectPlan = (plan) => {
-      dispatch(selectPlan(plan));
-   };
-
-   const animationProps = {
-      initial: { opacity: 0, x: -15 },
-      animate: { opacity: 1, x: 0 },
-      transition: { duration: 0.5 },
-   };
-
-   return (
-      <div
-         className={`flex items-center w-11/12 cursor-pointer p-1 transition-all ease-in-out ${
-            isSelected && 'bg-gradient-to-l from-transparent to-lighter'
-         }`}
-      >
-         <motion.li
-            {...animationProps}
-            className="w-full p-2 capitalize text-sm font-medium text-black "
-            onClick={() => {
-               handleSelectPlan(plan);
-            }}
-         >
-            {patientName}
-         </motion.li>
-
-         {/* delete plan*/}
-         <BsTrash
-            className="text-lg text-secondary h-full"
-            onClick={() => {
-               handleDeletePlan(plan.id);
-            }}
-         />
-      </div>
-   );
-};
 
 export default function DisplayPlans() {
    const plans = useSelector((state) => state.plan.value);
-
    const [searchInput, setSearchInput] = useState('');
-   let results = plans.filter((p) =>
+
+   let searchResults = plans.filter((p) =>
       p.formData.patientName.includes(searchInput)
    );
-   let whatToDisplay = searchInput === '' ? plans : results;
+   let plansToDisplay = searchInput === '' ? plans : searchResults;
 
    return (
-      <div className="flex flex-col gap-y-4 ">
-         {plans.length == 0 ? (
-            <p className="">No plans yet</p>
-         ) : (
-            <>
-               <input
-                  className="w-full tracking-wider font-medium outline-none p-2 rounded text-sm text-secondary"
-                  placeholder="search..."
-                  value={searchInput}
-                  onChange={(e) => {
-                     setSearchInput(e.target.value);
-                  }}
-               />
-
-               <ul className="flex flex-col gap-y-1.5 h-80 overflow-y-scroll w-full items-center">
-                  {whatToDisplay.map((p) => (
-                     <Plan key={p.id} plan={p} />
-                  ))}
-               </ul>
-            </>
-         )}
+      <div className="flex flex-col gap-y-4 w-9/12 border border-black">
+         <Search searchInput={searchInput} setSearchInput={setSearchInput} />
+         <Plans plansToDisplay={plansToDisplay} />
       </div>
    );
 }
