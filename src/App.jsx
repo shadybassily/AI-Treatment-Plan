@@ -7,13 +7,13 @@ import PlanDetails from "./components/plan-details/PlanDetails"
 
 import SignInForm from "./components/signIn-signUp/SignInForm";
 import SignUpForm from "./components/signIn-signUp/SignUpForm";
-import "./App.css";
+// import "./App.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 function App() {
   const client = new QueryClient();
   return (
-    <div className="App">
+    <div className="flex flex-row bg-accent">
       <QueryClientProvider client={client}>
         <BrowserRouter>
           <Routes>

@@ -7,15 +7,18 @@ module.exports = {
             // Configure your color palette here
             transparent: 'transparent',
             current: 'currentColor',
-            main: ' #1a99b5',
+            main: '#1A99B5',
+            lighter: '#b2dbd2',
+            accent: '#e7f3f0',
             secondary: '#00896d',
-            lighter: 'rgba(97, 181, 164, 0.5)',
-            accent: 'rgba(201, 227, 221, 0.85)',
-            black: '#0e0f11',
-            gradient : "linear-gradient(to right, #073c3266, transparent)"
+            dark: '#0e4551',
+            gradient: 'linear-gradient(to right, #073c3266, transparent)',
          },
+         fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+         },
+         
       },
    },
    plugins: [],
 };
-
