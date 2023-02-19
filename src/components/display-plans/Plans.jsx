@@ -5,7 +5,7 @@ import { GoPrimitiveDot } from 'react-icons/go';
 
 export default function Plans({ plansToDisplay }) {
    return (
-      <ul className="flex flex-col gap-y-2 h-80 overflow-y-scroll w-full capitalize font-light ">
+      <ul className="flex flex-col gap-y-2 h-80 overflow-y-scroll w-full capitalize font-light">
          {plansToDisplay.map((p) => (
             <Plan key={p.id} plan={p} />
          ))}
@@ -33,7 +33,7 @@ const Plan = ({ plan }) => {
 
    return (
       <li
-         className={`flex items-center cursor-pointer ${
+         className={`flex items-center cursor-pointer  ${
             isSelected &&
             'font-medium border-r-2 border-secondary transition-all ease-in-out'
          }`}

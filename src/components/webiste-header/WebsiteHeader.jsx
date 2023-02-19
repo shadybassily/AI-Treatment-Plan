@@ -1,6 +1,6 @@
 
 
-import logo from "../../assets/logo/logo.svg"
+import logo from "../../assets/logo/logo.png"
 export default function WebsiteHeader() {
   return (
     <div

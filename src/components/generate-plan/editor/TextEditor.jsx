@@ -26,13 +26,6 @@ export default function TextEditor({ selectedPlan }) {
       displayInEditor(selectedPlan?.chatGPTResponse);
    }, [selectedPlan]);
 
-   const editorProps = {
-      editorState,
-      onEditorStateChange: onEditorStateChange,
-      placeholder: 'Your plan will be generated here',
-      toolbar: toolbarOptions,
-   };
-
    const handleSaveUpdatedPlan = () => {
       //save only if we have selectedPlan active
       if (selectedPlan.id !== '') {
@@ -44,6 +37,13 @@ export default function TextEditor({ selectedPlan }) {
          }
          dispatch(updatePlan(newPlan))
       }
+   };
+
+   const editorProps = {
+      editorState,
+      onEditorStateChange: onEditorStateChange,
+      placeholder: 'Your plan will be generated here',
+      toolbar: toolbarOptions,
    };
    return (
       <div className="editor-container">

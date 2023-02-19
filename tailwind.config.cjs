@@ -13,9 +13,7 @@ module.exports = {
             secondary: '#00896d',
             dark: '#0e4551',
             gradient: 'linear-gradient(to right, #073c3266, transparent)',
-         },
-         fontFamily: {
-            poppins: ['Poppins', 'sans-serif'],
+            dimmed : "rgba(0, 0, 0, 0.2)"
          },
          
       },

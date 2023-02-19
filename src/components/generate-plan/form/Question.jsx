@@ -4,7 +4,7 @@ export default function Question({ question, register, error }) {
    const errorMessage = error[name]?.message;
    //common styles between all input types
    let commonStyleClasses =
-      'w-full border border-2 border-lighter rounded p-2 pl-6 shadow-md shadow-lighter outline-0';
+      'w-full border border-1 border-lighter rounded p-2 pl-6 shadow-sm shadow-dimmed outline-0 font-normal';
    //3 types of questions
    //input, select, textarea
 

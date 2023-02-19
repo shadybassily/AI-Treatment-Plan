@@ -45,7 +45,7 @@ export default function Form({ selectedPlan }) {
          {isLoading && <GeneratingLoader />}
          <section className="bg-white w-4/12 flex flex-col  h-screen">
             {/* head */}
-            <div className="h-60 flex items-end border-b-2 border-accent ">
+            <div className="h-40 flex items-end border-b-2 border-accent ">
                <p className="border-b-2 border-secondary text-sm text-secondary font-medium p-1">
                   Please answer these questions to generate your plan
                </p>
@@ -68,7 +68,7 @@ export default function Form({ selectedPlan }) {
 
                <AnimatingBtn
                   type="submit"
-                  className="w-full bg-secondary text-white font-medium p-2"
+                  className="w-full bg-secondary text-white font-medium text-sm p-3 rounded-md"
                >
                   Generate My Plan
                </AnimatingBtn>

@@ -1,20 +1,15 @@
-import { useDispatch } from 'react-redux';
 import DisplayPlans from '../display-plans/DisplayPlans';
-import { userSignOut } from '../../store/userSlice';
-
-import './sidebar.css';
-import WebsiteHeader from '../webiste-header/WebsiteHeader';
+import SidebarBottom from './SidebarBottom';
+import SidebarTop from './SidebarTop';
 
 export default function SideBar() {
-   const dispatch = useDispatch();
-  //  const handleLogout = () => {
-  //     dispatch(userSignOut());
-  //  };
-
    return (
-      <div className="sidebar bg-accent w-1/4">
-         <WebsiteHeader />
+      <div className="sidebar bg-accent w-1/4 flex flex-col gap-y-4 items-center text-sm ">
+         <SidebarTop />
+         <hr className="border border-lighter w-full" />
          <DisplayPlans />
+         <hr className="border border-lighter w-full" />
+         <SidebarBottom />
       </div>
    );
 }
