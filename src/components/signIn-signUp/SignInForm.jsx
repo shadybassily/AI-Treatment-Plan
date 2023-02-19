@@ -39,7 +39,7 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="sign-form-container">
+    <div className="">
       <h2 className="form-header">Sign in as a clinic </h2>
       <form className="sign-form" onSubmit={handleSignIn}>
         {fields.map((f, i) => (
