@@ -24,9 +24,9 @@ export default function SidebarTop() {
    const SelectedOptionStyle = 'font-normal text-black bg-lighter border-r-2 border-secondary transition-all ease-in-out';
 
    return (
-      <div className="w-9/12 flex gap-y-6 flex-col pt-4">
+      <div className="w-9/12 flex gap-y-6 flex-col py-4 m-auto">
          <img src={logo} className="h-10 w-fit"/>
-         <ul className="w-full m-auto font-light text-dimmed">
+         <ul className="w-full font-light text-dimmed">
             {menuOptions.map((opt) =>
                <li key={opt.id} onClick={() => {setSelectedOptionId(opt.id)}}>
                   <Link className={`p-2 block flex items-center gap-2 ${selectedOptionId == opt.id && SelectedOptionStyle}`}>

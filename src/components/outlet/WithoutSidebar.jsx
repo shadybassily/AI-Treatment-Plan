@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import WebsiteHeader from "../webiste-header/WebsiteHeader";
-import "./without-sidebar.css";
 
 //a stand-alone component that will display
 //components without side bar ex: login/registration

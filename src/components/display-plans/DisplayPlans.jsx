@@ -15,7 +15,7 @@ export default function DisplayPlans() {
    const plansToDisplay = searchInput === '' ? plans : searchResults;
 
    return (
-      <div className="flex flex-col gap-y-4 w-9/12 h-2/4 pt-3">
+      <div className="flex flex-col gap-y-4 w-9/12 h-2/4 py-4 m-auto">
          <Search searchInput={searchInput} setSearchInput={setSearchInput} />
          <Plans plansToDisplay={plansToDisplay} />
       </div>

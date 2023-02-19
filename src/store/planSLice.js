@@ -57,10 +57,13 @@ export const planSlice = createSlice({
       selectPlan: (state, action) => {
          state.selectedPlan = action.payload;
       },
+      clearPlans: (state) => {
+         state.value = [];
+      },
    },
 });
 
 export { getPlanById, dummyPlan };
-export const { savePlan, deletePlan, selectPlan, updatePlan } =
+export const { savePlan, deletePlan, selectPlan, updatePlan, clearPlans } =
    planSlice.actions;
 export default planSlice.reducer;
