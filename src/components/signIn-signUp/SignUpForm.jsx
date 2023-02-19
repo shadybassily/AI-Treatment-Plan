@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AnimatingBtn from "../animating-btn/AnimatingBtn";
-import "./forms.css";
 import ThirdPartySignUp from "./ThirdPartySignUp";
+import "./forms.css";
 
 //form field to loop over
 const fields = [
@@ -33,7 +33,7 @@ const fields = [
 ];
 export default function SignUpForm() {
   return (
-    <div className="sign-form-container">
+    <div className="">
       <h2 className="form-header">Create a Clinic Account</h2>
       <form className="sign-form">
         {fields.map((f, i) => (

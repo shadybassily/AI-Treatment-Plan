@@ -6,11 +6,11 @@ import WebsiteHeader from "../webiste-header/WebsiteHeader";
 export default function WithoutSidebar() {
   return (
     <div className="without-sidebar-container">
-      <WebsiteHeader />
-      <p>
+      {/* <WebsiteHeader /> */}
+      {/* <p>
         Your quick way for making a treatment plan <br />
         for your patients
-      </p>
+      </p> */}
       <Outlet />
     </div>
   );

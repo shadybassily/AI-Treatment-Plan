@@ -4,18 +4,24 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import ConfirmationPrompt from '../ConfirmationPrompt';
 import { clearPlans, dummyPlan, selectPlan } from '../../store/planSLice';
 import { useDispatch } from 'react-redux';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { userSignOut } from '../../store/userSlice';
 
 export default function SidebarBottom() {
    const dispatch = useDispatch();
-
-   const [isShowPrompt, setIsShowPrompt] = useState(true);
+   const navigate = useNavigate()
+   const [isShowPrompt, setIsShowPrompt] = useState(false);
    const promptMessage = 'Are you sure you want to delete all plans';
 
    const handleDeletePlans = () => {
       dispatch(clearPlans());
       dispatch(selectPlan(dummyPlan))
    };
+
+   const handleSignout=()=>{
+      dispatch(userSignOut())
+      navigate("/")
+   }
    return (
       <>
          {isShowPrompt && (
@@ -36,6 +42,7 @@ export default function SidebarBottom() {
                <BsExclamationLg className="text-secondary" /> FAQs
             </li>
          </ul>
+         <p onClick={handleSignout}>signout</p>
       </>
    );
 }

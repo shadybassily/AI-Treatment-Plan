@@ -65,7 +65,7 @@ export default function Question({ question, register, error }) {
          </div>
          {input}
          {/* if error */}
-         {errorMessage && <p className="error">{errorMessage}</p>}
+         {errorMessage && <p className="text-sm text-rose-600">{errorMessage}</p>}
       </div>
    );
 }
