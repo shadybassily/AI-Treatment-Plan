@@ -28,7 +28,7 @@ export default function SidebarTop() {
          <img src={logo} className="h-10 w-fit"/>
          <ul className="w-full m-auto font-light text-dimmed">
             {menuOptions.map((opt) =>
-               <li onClick={() => {setSelectedOptionId(opt.id)}}>
+               <li key={opt.id} onClick={() => {setSelectedOptionId(opt.id)}}>
                   <Link className={`p-2 block flex items-center gap-2 ${selectedOptionId == opt.id && SelectedOptionStyle}`}>
                      <span>{opt.option}</span>
                      <img src={opt.icon} />
